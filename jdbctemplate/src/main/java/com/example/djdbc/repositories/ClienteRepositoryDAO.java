@@ -48,4 +48,17 @@ public class ClienteRepositoryDAO {
 		return jdbcTemplate.queryForObject(querySelectClienteName,  new ClienteRowMapper(), new Object[]{username});
 	}
 
+	public Cliente getClienteId(int id) {
+		return jdbcTemplate.queryForObject(querySelectCliente, new Object[] { id }, new RowMapper<Cliente>() {
+			@Override
+			public Cliente mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Cliente cliente = new Cliente();
+				cliente.setId(rs.getInt("ID"));
+				cliente.setUsername(rs.getString("USERNAME"));
+				cliente.setEmail(rs.getString("EMAIL"));
+				cliente.setPassword(rs.getString("PASSWORD"));
+				return cliente;
+			}
+		});
+	}
 }

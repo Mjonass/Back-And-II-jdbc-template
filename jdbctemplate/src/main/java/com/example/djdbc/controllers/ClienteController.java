@@ -33,4 +33,9 @@ public class ClienteController {
 		return repository.getClienteName(username);
 	}
 
+	@GetMapping("/{id}")
+	public Cliente buscarCliente(@PathVariable Integer id) {
+		return repository.getClienteId(id);
+	}
+
 }
