@@ -28,4 +28,9 @@ public class ClienteController {
 		return repository.getCliente(id);
 	}
 
+	@GetMapping("/{username}")
+	public Cliente getClienteName(@PathVariable String username) {
+		return repository.getClienteName(username);
+	}
+
 }

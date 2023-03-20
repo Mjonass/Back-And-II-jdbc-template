@@ -21,6 +21,8 @@ public class ClienteRepositoryDAO {
 	String querySelectAllClientes = "Select * from CLIENTE";
 	
 	String querySelectCliente = "Select * from CLIENTE where ID = ?";
+
+	String querySelectClienteName = "Select * from CLIENTE where USERNAME = ?";
 	
 	public class ClienteRowMapper implements RowMapper<Cliente>{
 		@Override
@@ -40,6 +42,10 @@ public class ClienteRepositoryDAO {
 	
 	public Cliente getCliente(Integer id) {
 		return jdbcTemplate.queryForObject(querySelectCliente,  new ClienteRowMapper(), new Object[]{id});
+	}
+
+	public Cliente getClienteName(String username) {
+		return jdbcTemplate.queryForObject(querySelectClienteName,  new ClienteRowMapper(), new Object[]{username});
 	}
 
 }
